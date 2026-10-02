@@ -1,0 +1,11 @@
+CRIAR_TABELA= """
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email VARCHAR(100) UNIQUE NOT NULL
+)
+"""
+
+INSERIR_USUARIO= """
+    INSERT INTO usuarios (email)
+    VALUES (?, ?)
+"""
