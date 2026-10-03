@@ -21,11 +21,13 @@ def criar_tabela():
 
 def inserir_usuario(usuario: Usuario):
     conn = get_connection()
-    cursor = conn.cursor()
-    cursor.execute(INSERIR_USUARIO, (usuario.email,))
-    conn.commit()
-    cursor.close()
-    return cursor.lastrowid
+    try:
+        cursor = conn.cursor()
+        cursor.execute(INSERIR_USUARIO, (usuario.email,))
+        conn.commit()
+        return cursor.lastrowid
+    finally:
+        conn.close()
 
 def obter_usuario_por_id(usuario_id: int):
     conn = get_connection()
